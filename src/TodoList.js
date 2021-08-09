@@ -3,14 +3,15 @@ import Todo from "./Todo"
 import NewToDoForm from './NewTodoForm'
 
 class TodoList extends Component {
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state = {
-            todos: [
-            {task: "Walk the fish"},
-            {task: "Groom Chickens"}
-        ]}
+            todos: []
+        }
         this.create=this.create.bind(this)
+        this.remove=this.remove.bind(this)
+        this.update=this.update.bind(this)
+        this.toggleCompletion=this.toggleCompletion.bind(this)
     }
 
     create(newTodo){
@@ -19,17 +20,52 @@ class TodoList extends Component {
         })
     }
 
+    remove(id){
+        this.setState({
+            todos: this.state.todos.filter(t => t.id !== id)
+        })
+    }
+
+    update(id, updatedTask){
+        const updatedTodos = this.state.todos.map(todo => {
+            if(todo.id === id){
+                return {...todo, task: updatedTask}
+            }
+            return todo;
+        });
+        this.setState({todos: updatedTodos})
+    }
+
+    toggleCompletion(id){
+        const updatedTodos = this.state.todos.map(todo => {
+            if(todo.id === id){
+                return {...todo, completed: !todo.completed}
+            }
+            return todo;
+        });
+        this.setState({todos: updatedTodos})
+    }
+    
+
     render(){
         const todos = this.state.todos.map(todo => {
-            return <Todo task={todo.task}/>
-        })
+            return (
+            <Todo 
+                key={todo.id} 
+                id={todo.id} 
+                task={todo.task} 
+                removeTodo={this.remove}
+                updateTodo={this.update}
+                completed={todo.completed}
+                toggleTodo={this.toggleCompletion}
+                />
+            );
+        });
         return (
             <div>
                 <h1>Todo List!</h1>
-                <ul>
-                    <NewToDoForm createTodo={this.create}/>
-                    {todos}
-                </ul>
+                <NewToDoForm createTodo={this.create}/>
+                <ul>{todos}</ul>
             </div>
         )
     }
