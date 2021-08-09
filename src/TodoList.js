@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Todo from "./Todo"
+import NewToDoForm from './NewTodoForm'
 
 class TodoList extends Component {
     constructor(){
@@ -9,7 +10,15 @@ class TodoList extends Component {
             {task: "Walk the fish"},
             {task: "Groom Chickens"}
         ]}
+        this.create=this.create.bind(this)
     }
+
+    create(newTodo){
+        this.setState({
+            todos: [...this.state.todos, newTodo]
+        })
+    }
+
     render(){
         const todos = this.state.todos.map(todo => {
             return <Todo task={todo.task}/>
@@ -18,7 +27,8 @@ class TodoList extends Component {
             <div>
                 <h1>Todo List!</h1>
                 <ul>
-                {todos}
+                    <NewToDoForm createTodo={this.create}/>
+                    {todos}
                 </ul>
             </div>
         )
