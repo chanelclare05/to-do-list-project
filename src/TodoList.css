@@ -2,10 +2,9 @@
     margin: 4rem auto;
     padding: 2rem 3rem 3rem;
     max-width: 600px;
-    background: #ff6666;
+    background: #80aae2;
     color: #fff;
-    box-shadow: -20px -20px 0px 0px rgba(100, 100, 100, 0.1);
-    overflow: hidden;
+    overflow: visible;
   }
   .TodoList ul {
     margin-top: 2.6rem;
@@ -75,7 +74,7 @@
     transition: all 500ms cubic-bezier(0.39, 0.575, 0.565, 1);
     position: absolute;
   }
-  .task-text-exit {
+  /* .task-text-exit {
     transform: translateY(0);
     position: absolute;
   }
@@ -83,5 +82,5 @@
     transform: translateY(-77px);
     position: absolute;
     transition: all 500ms cubic-bezier(0.39, 0.575, 0.565, 1);
-  }
+  } */
   

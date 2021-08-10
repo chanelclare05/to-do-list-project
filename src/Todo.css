@@ -9,6 +9,7 @@
     overflow: hidden;
     position: relative;
     transition: opacity 500ms ease-in-out;
+    max-width: 600px;
   }
   .Todo-task {
     position: relative;
