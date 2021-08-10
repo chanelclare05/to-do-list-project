@@ -2,6 +2,7 @@ import React, { Component } from "react";
 // import uuid from "uuid/v4";
 import {v4 as uuidv4 } from 'uuid'
 // uuidv4()
+import "./NewTodoForm.css";
 
 class NewTodoForm extends Component {
   constructor(props) {
