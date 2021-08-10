@@ -31,7 +31,8 @@ class NewTodoForm extends Component {
           id='task'
           name='task'
           value={this.state.task}
-          onChange={this.handleChange}
+          onChange={this.handleChange
+          maxChar='140'}
         />
         <button>Add Todo</button>
       </form>
